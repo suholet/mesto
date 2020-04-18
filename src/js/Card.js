@@ -26,10 +26,6 @@ class Card {
         .catch((err) => {
           console.log(err);
         });
-      // .finally(() => {
-      //   cardLikesCounter.textContent = parseInt(cardLikesCounter.textContent) - 1;
-      //   cardElement.classList.remove('place-card__like-icon_liked');
-      // });
     }
     else {
       this._api.likeCard(this._id)
@@ -40,12 +36,7 @@ class Card {
         .catch((err) => {
           console.log(err);
         });
-      // .finally(() => {
-      //   cardLikesCounter.textContent = parseInt(cardLikesCounter.textContent) + 1;
-      //   cardElement.classList.add('place-card__like-icon_liked');
-      // });
     }
-    // cardElement.classList.toggle('place-card__like-icon_liked');
   }
 
   remove(cardElement) {
@@ -59,12 +50,6 @@ class Card {
         .catch((err) => {
           console.log(err);
         });
-      // .finally(() => {
-      //   // DONE: Карточка удалиться в любом случае, что бы там с сервером не произошло
-      //   // а это неверно
-      //   // Надо исправить
-      //   this.parentContainer.removeChild(cardElement.closest('.place-card'));
-      // });
     }
   }
 
@@ -125,9 +110,8 @@ class Card {
     }
     if (element.closest('.place-card__image')) {
       this.show(element);
-      // DONE: А вот тут последний return не нужен
-      // Можно лучше
-      // return;
     }
   }
 }
+
+export default Card;

@@ -1,3 +1,5 @@
+import Popup from "./Popup.js";
+
 class ProfilePopup extends Popup {
   constructor({ editProfilePopupElement, api, userInfo }) {
     super(editProfilePopupElement);
@@ -14,10 +16,6 @@ class ProfilePopup extends Popup {
 
   open() {
     this._submitButton.textContent = "Cохранить"
-    // DONE: Надо исправить 
-    // Нарушение инкапсуляции -- нельзя напрямую обращаться к переменным класса
-    // так их любой поменять сможет, данные следует получать через методы или через геттеры
-    // Несложно: https://learn.javascript.ru/private-protected-properties-methods
     this._form.elements.name.value = this._userInfo.userName; // document.querySelector('.user-info__name').textContent;
     this._form.elements.about.value = this._userInfo.aboutUser; //document.querySelector('.user-info__job').textContent;
 
@@ -43,8 +41,7 @@ class ProfilePopup extends Popup {
         this._submitButton.disabled = false;
         console.log(err);
       });
-    // .finally(() => {
-    //   this.close();
-    // });
   }
 }
+
+export default ProfilePopup;

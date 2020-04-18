@@ -127,4 +127,6 @@ class Api {
            throw err;
         });
     }
-  }
+}
+
+export default Api;

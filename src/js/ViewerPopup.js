@@ -1,3 +1,5 @@
+import Popup from "./Popup.js";
+
 class ViewerPopup extends Popup {
   constructor(element) {
     super(element);
@@ -13,10 +15,6 @@ class ViewerPopup extends Popup {
   }
 
   open(cardElement) {
-    // DONE: Можно лучше
-    // URL картинки можно сохранить при создании как атрибут data-url и получать через dataset
-    // https://developer.mozilla.org/ru/docs/Web/HTML/Global_attributes/data-*
-    // тогда не придется каждый раз строку парсить чтобы забрать url
     const imgUrl = cardElement.parentNode.dataset.url;// cardElement.parentNode.querySelector('.place-card__image').style.backgroundImage.slice(4, -1).replace(/"/g, "");
     const imgAlt = cardElement.parentNode.dataset.name;// cardElement.parentNode.querySelector('.place-card__name').textContent;
 
@@ -32,3 +30,5 @@ class ViewerPopup extends Popup {
     this._element.classList.remove('popup_is-opened');
   }
 }
+
+export default ViewerPopup;

@@ -76,3 +76,5 @@ class FormValidator {
       element.textContent = '';
     }  
   }
+
+export default FormValidator;

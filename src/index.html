@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Mesto</title>
-    <link rel="stylesheet" href="./pages/index.css" />
+    <link rel="stylesheet" href="<%= htmlWebpackPlugin.files.chunks.main.css %>" />
   </head>
   <body>
     <div class="root">
       <header class="header root__section">
-        <img src="./images/logo.svg" alt="mesto logo" class="logo" />
+        <img src="<%=require('./images/logo.svg').default%>" alt="mesto logo" class="logo" />
       </header>
       <div class="profile root__section">
         <div class="user-info">
@@ -29,7 +29,7 @@
       <!-- Окно добавления карточки -->
       <div class="popup popup__new">
         <div class="popup__content">
-          <img src="./images/close.svg" alt="" class="popup__close" />
+          <img src="<%=require('./images/close.svg').default%>" alt="" class="popup__close" />
           <h3 class="popup__title">Новое место</h3>
           <form class="popup__form" name="new" novalidate>
             <div class="popup__input-container">
@@ -67,7 +67,7 @@
       <!-- Окно редактирования профиля -->
       <div class="popup popup__edit">
         <div class="popup__content">
-          <img src="./images/close.svg" alt="" class="popup__close" />
+          <img src="<%=require('./images/close.svg').default%>" alt="" class="popup__close" />
           <h3 class="popup__title">Редактировать профиль</h3>
           <form class="popup__form" name="profile" novalidate>
             <div class="popup__input-container">
@@ -106,7 +106,7 @@
       <!-- Просмотрщик фото -->
       <div class="popup popup__viewer">
         <div class="popup__content popup__content_img">
-          <img src="./images/close.svg" alt="" class="popup__close" />
+          <img src="<%=require('./images/close.svg').default%>" alt="" class="popup__close" />
           <img
             src="https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg"
             alt="Челябинская область"
@@ -118,7 +118,7 @@
       <!-- Окно смены аватара -->
       <div class="popup popup__avatar">
         <div class="popup__content">
-          <img src="./images/close.svg" alt="" class="popup__close" />
+          <img src="<%=require('./images/close.svg').default%>" alt="" class="popup__close" />
           <h3 class="popup__title">Обновить аватар</h3>
           <form class="popup__form" name="avatar" novalidate>
             <div class="popup__input-container">
@@ -159,16 +159,6 @@
         </div>
       </template>
     </div>
-    <script src="./js/Api.js"></script>
-    <script src="./js/Card.js"></script>
-    <script src="./js/CardList.js"></script>
-    <script src="./js/Popup.js"></script>
-    <script src="./js/NewCardPopup.js"></script>
-    <script src="./js/ProfilePopup.js"></script>
-    <script src="./js/AvatarPopup.js"></script>
-    <script src="./js/ViewerPopup.js"></script>
-    <script src="./js/UserInfo.js"></script>
-    <script src="./js/FormValidator.js"></script>
-    <script src="./js//script.js"></script>
+    <script src="<%= htmlWebpackPlugin.files.chunks.main.entry %>"></script>
   </body>
 </html>

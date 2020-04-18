@@ -1,3 +1,5 @@
+import Popup from "./Popup.js";
+
 class AvatarPopup extends Popup {
   constructor({ avatarPopupElement, api, userInfo }) {
     super(avatarPopupElement);
@@ -36,12 +38,8 @@ class AvatarPopup extends Popup {
         this._submitButton.disabled = false;
         console.log(err);
       });
-    // .finally(() => {
-    //   // DONE: Надо исправить -- при ошибке сервера обновлять аватар не стоит
-    //   // Обновим аватар на странице
-    //   this.userInfo.setUserInfo();
-    //   this.close();
-    // });
   }
 
 }
+
+export default AvatarPopup;

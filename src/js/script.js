@@ -1,3 +1,14 @@
+import "../pages/index.css";
+import Api from "./Api.js";
+import Card from "./Card.js";
+import CardList from "./CardList.js";
+import NewCardPopup from "./NewCardPopup.js";
+import ProfilePopup from "./ProfilePopup.js";
+import AvatarPopup from "./AvatarPopup.js";
+import ViewerPopup from "./ViewerPopup.js";
+import UserInfo from "./UserInfo.js";
+import FormValidator from "./FormValidator.js";
+
 // IIFE
 (function() {
   // Начнем с того, что загрузим всю информацию с сервера и обновим страницу
