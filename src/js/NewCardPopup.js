@@ -1,3 +1,5 @@
+import Popup from "./Popup.js";
+
 class NewCardPopup extends Popup {
     constructor({addCardPopupElement, cardList}) {
       super(addCardPopupElement);
@@ -38,9 +40,7 @@ class NewCardPopup extends Popup {
         this._submitButton.disabled = false;
         console.log(err);
       });
-      // .finally(() => {
-      //  
-      //   this.close();
-      // });
     }
   }
+
+export default NewCardPopup;

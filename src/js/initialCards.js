@@ -40,3 +40,5 @@ const initialCards = [
         link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/vladivostok.jpg'
     }
 ];
+
+export default initialCards;

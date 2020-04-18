@@ -42,22 +42,17 @@ class UserInfo {
   }
 
   updateUserInfoElements(name, about, avatar = null) {
-    // DONE: Можно лучше
-    // Эти элементы передать в метод или конструктор, чтобы не брать их из DOM внутри класса
     this._usernameElement.textContent = name;
     this._aboutElement.textContent = about;
-    // document.querySelector('.user-info__name').textContent = name;
-    // document.querySelector('.user-info__job').textContent = about;
+
     if (avatar) {
       this._avatarElement.style.backgroundImage = `url(${avatar})`;
-      // document.querySelector('.user-info__photo').style.backgroundImage = `url(${avatar})`;
     }
   }
 
   updateAvatar(avatarUrl) {
-    // DONE: Надо исправить
-    // avatar не определена, зато avatarUrl не используется
-    // На ходовые свойства не влияет, но исправьте
     this._avatar = avatarUrl;
   }
 }
+
+export default UserInfo;
