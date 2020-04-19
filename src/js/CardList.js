@@ -8,8 +8,17 @@ class CardList {
   }
 
   addCardToContainer(name, link, id, likes = [], isMine = true) {
-    const card = this.createCard(name, link, id, isMine, likes, this._container, 
-      this._viewer, this._api, this._userInfo);
+    const card = this.createCard(
+      name,
+      link,
+      id,
+      isMine,
+      likes,
+      this._container,
+      this._viewer,
+      this._api,
+      this._userInfo
+    );
     const cardElement = card.create();
     this._container.appendChild(cardElement);
   }
@@ -17,12 +26,19 @@ class CardList {
   render(initialCards) {
     initialCards.forEach(function (item) {
       const isMine = this._userInfo.userID === item.owner._id ? true : false;
-      this.addCardToContainer(item.name, item.link, item._id, item.likes, isMine);
+      this.addCardToContainer(
+        item.name,
+        item.link,
+        item._id,
+        item.likes,
+        isMine
+      );
     }, this);
   }
 
   addNewCard(name, link) {
-    return this._api.addNewCard(name, link)
+    return this._api
+      .addNewCard(name, link)
       .then((data) => {
         this.addCardToContainer(data.name, data.link, data._id);
       })

@@ -1,5 +1,15 @@
 class Card {
-  constructor({ name, link, id, isMine, likes, parentContainer, viewer, api, userInfo }) {
+  constructor({
+    name,
+    link,
+    id,
+    isMine,
+    likes,
+    parentContainer,
+    viewer,
+    api,
+    userInfo,
+  }) {
     this._name = name;
     this._url = link;
     this._id = id;
@@ -15,23 +25,28 @@ class Card {
   }
 
   like(cardElement) {
-    const cardLikesCounter = cardElement.parentElement.querySelector('.place-card__like-counter');
+    const cardLikesCounter = cardElement.parentElement.querySelector(
+      ".place-card__like-counter"
+    );
     // Если лайк уже стоит, то удалим его
-    if (cardElement.classList.contains('place-card__like-icon_liked')) {
-      this._api.dislikeCard(this._id)
+    if (cardElement.classList.contains("place-card__like-icon_liked")) {
+      this._api
+        .dislikeCard(this._id)
         .then(() => {
-          cardLikesCounter.textContent = parseInt(cardLikesCounter.textContent) - 1;
-          cardElement.classList.remove('place-card__like-icon_liked');
+          cardLikesCounter.textContent =
+            parseInt(cardLikesCounter.textContent) - 1;
+          cardElement.classList.remove("place-card__like-icon_liked");
         })
         .catch((err) => {
           console.log(err);
         });
-    }
-    else {
-      this._api.likeCard(this._id)
+    } else {
+      this._api
+        .likeCard(this._id)
         .then(() => {
-          cardLikesCounter.textContent = parseInt(cardLikesCounter.textContent) + 1;
-          cardElement.classList.add('place-card__like-icon_liked');
+          cardLikesCounter.textContent =
+            parseInt(cardLikesCounter.textContent) + 1;
+          cardElement.classList.add("place-card__like-icon_liked");
         })
         .catch((err) => {
           console.log(err);
@@ -40,12 +55,13 @@ class Card {
   }
 
   remove(cardElement) {
-    const message = 'Вы действительно хотите удалить эту карточку?';
+    const message = "Вы действительно хотите удалить эту карточку?";
     const isConfirmed = window.confirm(message);
     if (isConfirmed) {
-      this._api.deleteCard(this._id)
+      this._api
+        .deleteCard(this._id)
         .then(() => {
-          this._parentContainer.removeChild(cardElement.closest('.place-card'));
+          this._parentContainer.removeChild(cardElement.closest(".place-card"));
         })
         .catch((err) => {
           console.log(err);
@@ -70,12 +86,14 @@ class Card {
     const cardTemplate = document.querySelector('[data-component="card"]');
 
     const cardFragment = cardTemplate.content.cloneNode(true);
-    const cardContainer = cardFragment.querySelector('.place-card');
+    const cardContainer = cardFragment.querySelector(".place-card");
 
-    const cardPlaceName = cardContainer.querySelector('.place-card__name');
-    const cardPlaceImage = cardContainer.querySelector('.place-card__image');
-    const cardLikesCounter = cardContainer.querySelector('.place-card__like-counter');
-    const cardLikeBtn = cardContainer.querySelector('.place-card__like-icon');
+    const cardPlaceName = cardContainer.querySelector(".place-card__name");
+    const cardPlaceImage = cardContainer.querySelector(".place-card__image");
+    const cardLikesCounter = cardContainer.querySelector(
+      ".place-card__like-counter"
+    );
+    const cardLikeBtn = cardContainer.querySelector(".place-card__like-icon");
 
     cardPlaceName.textContent = this._name;
     cardContainer.dataset.name = this._name;
@@ -85,30 +103,32 @@ class Card {
     cardLikesCounter.textContent = this._likes.length;
     // Проверяем, есть ли среди среди лайков мои
     if (this.isLiked(this._likes)) {
-      cardLikeBtn.classList.add('place-card__like-icon_liked');
+      cardLikeBtn.classList.add("place-card__like-icon_liked");
     }
     // Отображаем кнопку удалить только на своих карточках
     if (this._isMine) {
-      const deleteBtnElement = cardContainer.querySelector('.place-card__delete-icon');
-      deleteBtnElement.style.display = 'block';
+      const deleteBtnElement = cardContainer.querySelector(
+        ".place-card__delete-icon"
+      );
+      deleteBtnElement.style.display = "block";
     }
 
-    cardContainer.addEventListener('click', this.clickOnCard.bind(this));
+    cardContainer.addEventListener("click", this.clickOnCard.bind(this));
     return cardContainer;
   }
 
   clickOnCard(event) {
     // DONE: Можно лучше -- return в конце каждого if позволит не городить огород из else if
     const element = event.target;
-    if (element.closest('.place-card__like-icon')) {
+    if (element.closest(".place-card__like-icon")) {
       this.like(element);
       return;
     }
-    if (element.closest('.place-card__delete-icon')) {
+    if (element.closest(".place-card__delete-icon")) {
       this.remove(element);
       return;
     }
-    if (element.closest('.place-card__image')) {
+    if (element.closest(".place-card__image")) {
       this.show(element);
     }
   }
