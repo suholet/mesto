@@ -1,5 +1,5 @@
 class UserInfo {
-  constructor({api, usernameElement, aboutElement, avatarElement}) {
+  constructor({ api, usernameElement, aboutElement, avatarElement }) {
     this._api = api;
     this._usernameElement = usernameElement;
     this._aboutElement = aboutElement;
@@ -27,7 +27,8 @@ class UserInfo {
   }
 
   setUserInfo() {
-    this._api.getUserInfo()
+    this._api
+      .getUserInfo()
       .then((data) => {
         this._username = data.name;
         this._about = data.about;
